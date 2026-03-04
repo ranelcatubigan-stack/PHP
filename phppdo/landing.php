@@ -8,7 +8,7 @@ require 'select.php';
 ?>
 
 
-<h2>Simple PDO CRUD</h2>
+<h2 style="text-align: center;">Simple PDO CRUD</h2>
 <?php
 // CHECK IF EDIT MODE
 $editUser = null;
@@ -29,13 +29,14 @@ if (isset($_GET['edit'])) {
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Database</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   </head>
   
   <body>
+    <div class="container">
 <!-- ADD / UPDATE FORM -->
+ <div class="item" style="width: 50%; margin-left: 1em; text-align: center; border: 1px solid black; padding: 1em black;">
 <h3><?= $editUser ? 'Update User' : 'Add User' ?></h3>
 
 <form method="POST">
@@ -44,46 +45,47 @@ if (isset($_GET['edit'])) {
     <input type="hidden" name="users_id" value="<?= $editUser['users_id'] ?>">
   <?php endif; ?>
 
-  <label>Name:</label>
-  <input type="text" name="name" value="<?= !empty($editUser) ? $editUser['name'] : '' ?>" required><br>
+  <label style="display: block; margin-bottom: 1px;" style="background-color: #fffff0; color: #2E6F40;">Name:</label>
+  <input type="text" name="name" value="<?= !empty($editUser) ? $editUser['name'] : '' ?>" required style=""><br>
 
-  <label>Email:</label>
+  <label style="display: block; margin-bottom: 1px;">Email:</label>
   <input type="email" name="email" value="<?= !empty($editUser) ? $editUser['email'] : '' ?>" required><br>
 
-  <label>Product:</label>
+  <label style="display: block; margin-bottom: 1px;">Product:</label>
   <input type="text" name="product" placeholder="Product" required><br>
 
-  <label>Amount:</label>
+  <label style="display: block; margin-bottom: 1px; ">Amount:</label>
   <input type="number" step="0.01" name="amount" placeholder="Amount" required><br>
 
 
 
   <!-- Submit buttons -->
   <?php if (!empty($editUser)): ?>
-    <button type="submit" name="update">Update</button>
+    <button type="submit" name="update" style="margin-top: 1em; width: 150px; background-color: #2E6F40; color: #fffff0;">Update</button>
     <a href="landing.php">Cancel</a>
   <?php else: ?>
-    <button type="submit" name="add">Add</button>
+    <button type="submit" name="add" style="margin-top: 1em; width: 150px; background-color: #2E6F40; color: #fffff0;">Add</button>
   <?php endif; ?>
 </form>
 
+  </div>
 
 
 
 
 <!-- USER TABLE -->
-<h3>User List</h3>
 
 
-<table class="table center">
-<thead class="table-light"> 
+<div class="item" style=" padding: 1em black; margin-left: -200px;" v>
+  <h3 style="border-bottom: 1px solid black; padding-bottom: 0.5em;">User List</h3>
+<table class="table table-bordered" style="width: 100%; border: 1px solid black;">
   <tr class="table-active">
-    <th scope="col">users_id</th>
-    <th scope="col">Name</th>
-    <th scope="col">Email</th>
-    <th scope="col">Product</th>
-    <th scope="col">Amount</th>
-    <th scope="col">Action</th>
+    <th>users id</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Product</th>
+    <th>Amount</th>
+    <th>Action</th>
   </tr>
   </thead>
 
@@ -104,13 +106,18 @@ if (isset($_GET['edit'])) {
   </tr>
   <?php endforeach; ?>
 </table>
-<style>
-  table {
-  margin-left: auto;
-  margin-right: auto;
-}
-  </style>
-
- 
+  </div>
+  </div>
+  <style>
+        .container{
+      display: grid; 
+      grid-template-columns:500px 590px;
+      border: 1px solid black;
+      padding: 1em;
+      background-color: #014421;
+      color: #fffff0;
+        }
+      
+        </style>
 </body>
 </html>
