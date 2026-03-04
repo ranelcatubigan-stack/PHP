@@ -11,8 +11,6 @@ if(isset($_POST['update'])){
     $stmt = $pdo -> prepare("UPDATE users SET name = ?, email = ? WHERE users_id = ?");
     $stmt -> execute([ $name, $email, $users_id,]);
 
-    $stmt = $pdo -> prepare("UPDATE orders SET product = ?, amount = ? WHERE users_id = ?");
-    $stmt -> execute([$product, $amount, $users_id]);
-
 }
+
 ?>
